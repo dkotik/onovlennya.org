@@ -1,0 +1,11 @@
+---
+import DefaultLayout from "@layouts/default.astro";
+import Content, {frontmatter} from "@content/en/index.mdx";
+---
+<DefaultLayout
+    title={frontmatter?.title}
+    description={frontmatter?.description}
+    class={frontmatter?.class}
+>
+    <Content />
+</DefaultLayout>

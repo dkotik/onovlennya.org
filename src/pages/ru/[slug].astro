@@ -1,0 +1,34 @@
+---
+import DefaultLayout from "@layouts/default.astro";
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const extractSlug = (url) => {
+      let slug = url.match(/(\w[\w\-]*\w)\.mdx$/)?.pop();
+      if (!slug) throw Error(`"${url}" does not match a valid MDX path`);
+      return slug;
+  }
+
+  return Promise.all((await Astro.glob('../../../content/ru/*.mdx'))
+    .filter((page) => !page?.frontmatter?.draft) // skip drafts
+    .map(async ({ default: Content, frontmatter, file, url }) => {
+        return {
+          params: { slug: extractSlug(url) || "index" },
+          props: {
+            Content,
+            frontmatter: frontmatter
+          }
+        }
+     })
+  )
+}
+
+// const { slug } = Astro.params;
+const { Content, frontmatter } = Astro.props;
+---
+<DefaultLayout
+    title={frontmatter?.title}
+    description={frontmatter?.description}
+    class={frontmatter?.class}
+>
+    <Content />
+</DefaultLayout>

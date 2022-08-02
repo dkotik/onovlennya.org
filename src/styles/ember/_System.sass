@@ -1,0 +1,28 @@
+$font-sans: -apple-system, '.SFNSText-Regular', 'San Francisco', 'Roboto', 'Segoe UI', 'Helvetica Neue', 'Lucida Grande', sans-serif !default
+$font-text: 'medium-content-serif-font', Georgia, Cambria, 'Times New Roman', Times, serif !default
+
+// Michael McMillan ‏@mikemcchillin:
+// My new favorite thing. Don't entice a user to select text when you just want them to read.
+body
+  cursor: default
+
+::-moz-selection
+  background: rgba(0,0,0,0.2)
+
+::selection
+  background: rgba(0,0,0,0.2)
+
+
+#{'[v-cloak]'}
+  display: none
+
+
+// body,div,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,select,textarea,p,blockquote,th,td,figcaption
+//   margin: 0
+//   padding: 0
+//   box-sizing: border-box
+//   word-wrap: break-word
+//   overflow-wrap: break-word
+//   font-family: $font-sans
+
+// vue.js escaped directive - hide elements that haven't been rendered yet

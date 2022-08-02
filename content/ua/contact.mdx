@@ -1,0 +1,16 @@
+---
+title: "Контакты"
+---
+
+import ContactForm from "@components/contact-form.svelte";
+
+# Контакт
+
+<ContactForm
+  client:load
+  locale="ru"
+  endpoint="https://ember.fly.dev/api/v1/contact.json"
+>
+  <h1>Спасибо!</h1>
+  <p>Ваше сообщение было отправлено.</p>
+</ContactForm>

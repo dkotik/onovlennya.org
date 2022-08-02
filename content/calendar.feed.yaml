@@ -1,0 +1,11 @@
+# source: https://www.youtube.com/feeds/videos.xml?channel_id=UCyv2yBPobX_LIMWxu5-cGHQ
+# source: https://www.vic.gov.au/sites/default/files/2019-11/Parliament_sitting_dates.ics
+source: $ICS_CALENDAR
+title: "Обновление: Предстоящие События"
+# description: Ahh
+end: 2160h # 3 months
+maximum: 5
+locale: ru_UA
+# timeformat: "%A, %e %b %R %Z"
+timeformat: "%A, %e %b %R"
+timezone: Europe/Kiev

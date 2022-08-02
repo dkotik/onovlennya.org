@@ -1,0 +1,56 @@
+---
+import { localizePath } from "astro-i18next";
+import i18next, { t } from "i18next";
+import Navigation from "./fragments/navigation.astro";
+import Language from "./fragments/language.astro";
+import HeadMeta from "./fragments/headmeta.astro";
+import '../styles/default.sass';
+import config from '@content/configuration.json';
+
+let { phone, address } = config;
+const locale = /^\/en\//.test(Astro.url.pathname)
+    ? "en" : /^\/ru\//.test(Astro.url.pathname) ? "ru" : "ua";
+i18next.changeLanguage(locale);
+---
+<html>
+  <head>
+    <HeadMeta
+        title={Astro.props.title}
+        description={Astro.props.description}
+        keywords={Astro.props.keywords}
+    />
+  </head>
+  <body class={Astro.props.class}>
+    <slot name="hero">
+      { Astro.props.class === "frontpage"
+          ?
+            <div id="logo">
+              <img src="/img/logo.png" />
+            </div>
+            <div style="float: right; margin: 0 1em 1em 1em">
+            <Language />
+            </div>
+          : <Navigation />
+      }
+
+    </slot>
+    <main class="container">
+        <section class="content">
+          <slot />
+        </section>
+        </main>
+    <footer>
+        <slot name="footer">
+            <section class="container has-text-centered">
+                  <small>"Если будем говорить правду с любовью, то будем расти, во всём приближаясь к Нему." (Ефесянам 4:15)</small>
+            </section>
+        </slot>
+    </footer>
+  </body>
+</html>
+
+<style>
+#lang {
+  font-size: 1.6em;
+}
+</style>
